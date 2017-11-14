@@ -1,0 +1,96 @@
+public class ex7_1_4 {
+    public static void main(String[] args) {
+        double value1 = 1234567890.0; //7.1
+        System.out.printf("%.2e",value1);
+        System.out.println();
+
+        int value2 = 1234567890;
+        System.out.printf("\n" + "%20d",value2);        //7.2
+
+
+        System.out.printf("\n" + "%-20d",value2);       //7.3
+
+
+        String s = "Alice"; String s2 = "Bob"; String s3 = "Carol"; String s4 = "Dominica";        //7.4
+        System.out.printf( "\n" + "%.4s",s);
+        System.out.printf("\n" + "%4s",s2);
+        System.out.printf("\n" + "%.4s",s3);
+        System.out.printf("\n" + "%-5.4s",s4);
+
+
+    }
+}
+-------------------------------------------------------------------------------------------------------------------
+import java.io.IOException;
+import java.util.Scanner;
+import java.io.FileInputStream;
+
+public class ex7_5 {
+    public static void main(String[] args)
+            throws IOException
+    {
+        Scanner scanner = new Scanner(System.in);
+        int count = 0;
+        double sum = 0;
+        double avg = 0;
+
+        while (scanner.hasNextDouble()) {
+            sum += scanner.nextDouble();
+            count++;
+        }
+        avg = sum/count;
+        System.out.println("Count: " + count + ", Sum: " + sum + ", Average: " + avg);
+        System.out.println();
+
+
+        // Second part of the exercise
+        int count2 = 0;
+        double sum2 = 0;
+        double avg2 = 0;
+
+        FileInputStream fileInputStream = new FileInputStream("cyprus_wind_power.txt");
+        Scanner fileInput = new Scanner(fileInputStream);
+
+        while(fileInput.hasNextDouble()){
+        sum2 += fileInput.nextDouble();
+        count2++;
+        }
+        avg2 = sum2/count2;
+        System.out.println("Count: " + count2 + ", Sum: " + sum2 + ", Average: " + avg2);
+    }
+}
+-------------------------------------------------------------------------------------------------------------------
+public class ex7_6 {
+    public static void main(String[] args) {
+        int input = Integer.parseInt(args[0]);   // In order to work, write in cmd: java ex7_6 1000 | java ex7_5
+                                                 // "ex7_5" is the "averager" class name "ex7_6" is the current class name.
+        for (int i = 0; i < input; i++){
+            System.out.println(Math.random());
+        }
+    }
+}
+-------------------------------------------------------------------------------------------------------------------
+import java.io.IOException;
+import java.io.PrintWriter;
+
+public class ex7_7 {
+    public static void main(String[] args)
+            throws IOException
+    {
+        PrintWriter file = new
+                PrintWriter("result.txt");
+        int input = Integer.parseInt(args[0]);
+
+        int count = 0;
+        double sum = 0;
+        double avg = 0;
+
+        for (int i = 0; i < input; i++){
+            sum += (Math.random());
+            count++;
+        }
+        avg = sum/count;
+        file.print("Count: " + count + ", Sum: " + sum + ", Average: " + avg);
+        file.close();
+    }
+}
