@@ -1,3 +1,6 @@
+/**
+ * Created by FAlexandrou on 30/11/2017.
+ */
 import java.io.IOException;
 import java.util.Scanner;
 import java.io.FileInputStream;
@@ -15,13 +18,15 @@ public class ex9_3 {
         FileInputStream fileInputStream = new FileInputStream("fixtures.txt");
         Scanner fileInput = new Scanner(fileInputStream);
         int n = Integer.parseInt(fileInput.nextLine());
+
         Entry a[] = new Entry[n];
+
         for (int i = 0; i < n; i++) {
             a[i] = new Entry();
             a[i].club = fileInput.nextLine();
             a[i].games = Integer.parseInt(fileInput.nextLine());
             a[i].points = Integer.parseInt(fileInput.nextLine());
-            System.out.printf("%24s %12d %8d\n",a[i].club,a[i].games,a[i].points);
+            System.out.printf("%24s %12d %8d %10.2f \n",a[i].club,a[i].games,a[i].points,(double)a[i].points/a[i].games);
         }
     }
 }
