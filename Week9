@@ -1,0 +1,194 @@
+public class ex9_1 {
+    public static final double EARTH_RADIUS = 6371;
+    public static final double EARTH_MASS = 5.9736e24;
+
+    public static class Planet
+    {
+        String name;
+        double radius;
+        double mass;
+    }
+    public static void main(String [] args)
+    {
+// declare and initialize planets
+        Planet mercury = new Planet();
+        Planet venus = new Planet();
+        Planet earth = new Planet();
+        Planet mars = new Planet();
+// initialize planets' values
+        initializePlanet(mercury, "Mercury", 0.38 * EARTH_RADIUS, 0.06 * EARTH_MASS);
+        initializePlanet(venus, "Venus", 0.95 * EARTH_RADIUS, 0.82 * EARTH_MASS);
+        initializePlanet(earth, "Earth", EARTH_RADIUS, EARTH_MASS);
+        initializePlanet(mars, "Mars", 0.53 * EARTH_RADIUS, 0.11 * EARTH_MASS);
+// print inner planets
+        printPlanet(mercury);
+        printPlanet(venus);
+        printPlanet(earth);
+        printPlanet(mars);
+
+
+
+        //ex9_2
+        double max = mercury.mass;
+        double min = mercury.radius;
+        String maxS = "";
+        String minS = "";
+        if (max < venus.mass)
+            System.out.println("Heaviest planet in terms of mass: " + venus.name);
+        else if (max < earth.mass)
+            System.out.println("Heaviest planet in terms of mass: " + earth.name);
+        else if (max < mars.mass)
+            System.out.println("Heaviest planet in terms of mass: " + mars.name);
+        else
+            System.out.println("Heaviest planet in terms of mass: " + mercury.name);
+
+        if (min>venus.radius)
+            System.out.println("Smallest planet in terms of radius: " + venus.name);
+        else if (min>earth.radius)
+            System.out.println("Smallest planet in terms of radius: " + earth.name);
+        else if (min>mars.radius)
+            System.out.println("Smallest planet in terms of radius: " + mars.name);
+        else
+            System.out.println("Smallest planet in terms of radius: " + mercury.name);
+    }
+    public static void initializePlanet(Planet planet,String p_name, double p_radius, double p_mass)
+
+    {
+// your code here
+        planet.name = p_name;
+        planet.radius = p_radius;
+        planet.mass = p_mass;
+    }
+    public static void printPlanet(Planet planet)
+    {
+// your code here
+        System.out.println("Name: " + planet.name);
+        System.out.println("Radius: " + planet.radius);
+        System.out.println("Mass: " + planet.mass);
+        System.out.println();
+    }
+}
+
+-----------------------------------------------------------------------------------------------------------
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Scanner;
+
+public class ex9_3 {
+    public static class Entry {
+        String club;
+        int games;
+        int points;
+    }
+
+    public static void main(String[] args)
+            throws IOException {
+        FileInputStream fileInputStream = new FileInputStream("fixtures.txt");
+        Scanner scanner = new Scanner(fileInputStream);
+        int n = Integer.parseInt(scanner.nextLine());
+        Entry[] a = new Entry[n];
+        for (int i = 0; i < n; i++) {
+            a[i] = new Entry();
+            a[i].club = scanner.nextLine();
+            a[i].games = Integer.parseInt(scanner.nextLine());
+            a[i].points = Integer.parseInt(scanner.nextLine());
+            System.out.printf("%24s %12d %8d %10.2f \n", a[i].club, a[i].games, a[i].points, (double) a[i].points / a[i].games);
+        }
+        System.out.println("\n" +"//Ex9_4" );
+        moreThan20(n, a);        //Ex9_4
+        System.out.println("\n" + "//Ex9_5" );
+        fewerPoints(a,n);        //Ex9_5
+        int limit = 25;
+        System.out.println("\n" + "//Ex9_6" );
+        generic(a,limit,n);      //Ex9_6
+    }
+
+
+
+    //Ex9_4
+    public static void moreThan20(int length, Entry b[]) {
+        for (int i = 0; i < length; i++) {
+            if (b[i].points > 20)
+                System.out.println(b[i].club);
+        }
+    }
+
+
+
+    //Ex9_5
+    public static void fewerPoints(Entry b[], int length) {
+        int minimum = b[0].points;
+        int minimum2 = b[0].points;
+        int minimum3 = b[0].points;
+        for (int i = 0; i < length; i++) {
+            if (minimum3>b[i].points && minimum2<=b[i].points){
+                minimum3 = b[i].points;
+            }
+            if (minimum2>b[i].points && minimum<=b[i].points){
+                //We have a new 2nd lowest - shift previous 2nd lowest up
+                minimum3 = minimum2;
+                minimum2 = b[i].points;
+            }
+            if (minimum>b[i].points){
+                //We have a new lowest - shift previous lowest up
+                minimum3 = minimum2;
+                minimum2 = minimum;
+                minimum = b[i].points;
+
+            }
+        }
+        System.out.println(minimum + " " + minimum2 + " " + minimum3);
+
+    }
+    
+    
+
+    //Ex9_6
+    public static void generic(Entry c[], int limit2 , int length){
+        System.out.println("Clubs with more or equal points than the limit '" + limit2 + "' : ");
+        for (int i = 0; i < length; i++) {
+            if (c[i].points>= limit2)
+                System.out.println(c[i].club + " points: " + c[i].points);
+        }
+    }
+}
+
+----------------------------------------------------------------------------------------------------
+
+public class ex9_7 {
+    public static void main(String[] args) {
+        if (isPalindrome(args[0]))
+            System.out.println("The string '" + args[0] + "' is a palindrome");
+        else
+            System.out.println("The string '" + args[0] + "' is not a palindrome");
+
+    }
+    public static boolean isPalindrome(String s){
+       int i=0;
+       int i2=s.length()-1;
+       while (i2>i){
+           if (s.charAt(i) != s.charAt(i2))
+               return false;
+           i++;
+           i2--;
+       }
+       return true;
+    }
+}
+
+----------------------------------------------------------------------------------------------------
+
+public class ex9_8 {
+    public static void main(String[] args) {
+        if (isSubstring(args[0],args[1]))
+            System.out.println("The string '" + args[1] + "' is a substring of '" + args[0] + "'");
+        else
+            System.out.println("The string '" + args[1] + "' is not a substring of '" + args[0] + "'");
+
+    }
+
+    public static boolean isSubstring(String s1, String s2) {
+        return (s1.contains(s2));
+    }
+}
