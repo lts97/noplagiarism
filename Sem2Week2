@@ -19,3 +19,28 @@ int main()
 		cout << endl;
 	}
 }
+
+2_3
+#include <iostream>
+using namespace std;
+int main(){
+	int a, b,sum=0;
+	cout << "enter a: ";
+	cin >> a;
+	cout << "enter b: ";
+	cin >> b;
+
+	if (a < b)
+	{
+		for (int i = a; i <= b; i++) {
+			sum += i;
+		}
+	}
+	else
+	{
+		for (int i = b; i <= a; i++) {
+			sum += i;
+		}
+	}
+	cout << sum;
+}
