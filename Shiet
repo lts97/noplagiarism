@@ -1,0 +1,41 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+int linear_search(int numbers[], int size, int key);
+
+int main(int argc, char* argv[]) {
+
+	char* filename = argv[1];
+	char* filename2 = argv[2];
+	ifstream myfile;
+	myfile.open(filename);
+
+	int N;
+	myfile >> N;
+	int* numbers = new int[N];
+	for (int i = 0; i < N; i++)
+		myfile >> numbers[i];
+	myfile.close();
+	
+	myfile.open(filename2);
+	int M;
+	myfile >> M;
+
+	int* numbers2 = new int(M);
+	for (int i = 0; i < 200; i++)
+		myfile >> numbers2[i];
+
+	for (int i = 0; i < N; i++) {
+		//cout << linear_search(numbers, N, numbers2[i]);
+		cout << numbers2[i];
+	}
+
+}
+	int linear_search(int numbers[], int size, int key) {
+		for (int i = 0; i < size; i++) {
+			if (numbers[i] == key)
+				return key;
+			else
+				return -1;
+		}
+}
