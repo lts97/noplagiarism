@@ -3,6 +3,7 @@ Ex1,2
 #include <iostream>
 #include <fstream>
 using namespace std;
+
 int main(int argc, char* argv[]) {
 	char* filename = argv[1];
 	char* filename2 = argv[2];
@@ -34,6 +35,7 @@ int main(int argc, char* argv[]) {
 Ex 3
 #include <iostream>
 using namespace std;
+
 int main(int argc, char* argv[]) {
 	cout << "Enter a number: ";
 	int n, sum;
@@ -68,3 +70,22 @@ int main()
 		cout << endl;
 	}
 }
+--------------------------------------------------------------------------------------------------------------------------
+Ex 5
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int N = 100;
+	int counter = 0;
+	int max = rand();
+	int* array = new int[N];
+	for (int i = 0; i < N; i++) {
+		array[i] = rand();
+	}
+	for (int i = 0; i < N; i++) {
+		if (array[i] < max)
+			counter++;
+	}
+	cout << "Numbers smaller than Max: " << counter << endl << "Max Number: " << max << endl;
