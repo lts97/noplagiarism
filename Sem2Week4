@@ -1,0 +1,56 @@
+Ex 1
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int linear_search(int numbers[], int size, int key);
+
+int main(int argc,char* argv[])
+{
+	int n, m;
+	char* filename = argv[1];
+	char* filename2 = argv[2];
+	ifstream file;
+	file.open(filename2);
+	file >> n;
+	int* valid_tickets = new int[n];
+
+	for (int i = 0; i < n; i++)
+	{
+		file >> valid_tickets[i];
+	}
+
+	file.close();
+	file.open(filename);
+	file >> m;
+	int* check_tickets = new int[m];
+
+	for (int i = 0; i < m; i++)
+	{
+		file >> check_tickets[i];
+	}
+    
+	int counter = 0;
+	for (int i = 0; i < m; i++) {
+		if (linear_search(valid_tickets,m,check_tickets[i]) == 1)
+		counter++;
+			
+		}
+	cout <<"Found " << counter << " matches" << endl;
+	}
+
+
+
+int linear_search(int numbers[], int size, int key) {
+	bool found = false;
+	for (int j = 0; j < size; j++) {
+		if (numbers[j] == key)
+			found = true;
+		
+	}
+	if (found)
+		return 1;
+	else
+		return 0;
+
+}
