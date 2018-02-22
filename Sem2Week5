@@ -31,3 +31,23 @@ int main() {
 	cout << recursive(n) << endl;
 	
 }
+-------------------------------------------------------------------------------------------------------------------
+Ex 4
+#include <iostream>
+using namespace std;
+
+void triangle(int m, int n) {
+	if (m > n) cout << endl;
+	else {
+		for (int i = 0; i < m; i++) {
+			cout << "*";
+		}
+		cout << endl;
+		triangle(m + 1,n);
+	}
+}
+int main() {
+	int m = 3;
+	int n = 5;
+	triangle(m, n);
+}
