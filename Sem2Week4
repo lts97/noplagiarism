@@ -54,3 +54,70 @@ int linear_search(int numbers[], int size, int key) {
 		return 0;
 
 }
+-----------------------------------------------------------------------------------------------------------------------
+Ex 2
+#include <iostream>
+#include <fstream>
+#include <algorithm>
+using namespace std;
+
+int binary_search(int numbers[], int size, int key);
+
+int main(int argc, char* argv[])
+{
+	int n, m;
+	char* filename = argv[1];
+	char* filename2 = argv[2];
+	ifstream file;
+	file.open(filename2);
+	file >> n;
+	int* valid_tickets = new int[n];
+
+	for (int i = 0; i < n; i++)
+	{
+		file >> valid_tickets[i];
+	}
+
+	file.close();
+	file.open(filename);
+	file >> m;
+	int* check_tickets = new int[m];
+
+	for (int i = 0; i < m; i++)
+	{
+		file >> check_tickets[i];
+	}
+
+	sort(valid_tickets,valid_tickets + n);
+	int counter = 0;
+	for (int i = 0; i < m; i++) {
+		if (binary_search(valid_tickets, m, check_tickets[i]) == 1)
+			counter++;
+
+	}
+	cout << "Found " << counter << " matches" << endl;
+}
+
+
+
+int binary_search(int numbers[], int size, int key) {
+	int low = 0;
+	int high = size;
+	bool found = false;
+	while (low<=high) {
+		int middle = low + (high - low) / 2;
+		if (key < numbers[middle])
+			high = middle - 1;
+		else if (key > numbers[middle])
+			low = middle + 1;
+		else {
+			found = true;
+			break;
+		}
+	}
+	if (found)
+		return 1;
+	else
+		return 0;
+
+}
