@@ -24,3 +24,22 @@ int main(){
 	cout << maximum(arr, 5) << endl;
 }
 ------------------------------------------------------------------------------------------------------------------------
+Ex 2
+#include <iostream>
+using namespace std;
+int myStrlen(char* cstring) {
+	int counter = 0;
+	while (*cstring != '\0') {
+		cout << *cstring;
+		counter++;
+		*cstring++;
+		
+	}
+	return counter;
+}
+
+int main(){
+	char lol[] = {"Hello World"};
+	cout << endl << myStrlen(lol) << endl;
+}
+------------------------------------------------------------------------------------------------------------------------
