@@ -24,6 +24,39 @@ int main(){
 	cout << maximum(arr, 5) << endl;
 }
 ------------------------------------------------------------------------------------------------------------------------
+Ex1
+#include <iostream>
+#include <fstream>
+using namespace std;
+double* maximum(double* a, int size) {
+	double* max =&a[0];
+	int nullCounter = 0;
+	for (int i = 0; i < size; i++) {
+		if (a[i] == NULL)
+			nullCounter++;
+		if (*max < a[i])
+			max = &a[i];
+	}
+	if (nullCounter == size)
+		return NULL;
+	else {
+		cout << "Adress: " << max << endl;
+		return max;
+	}
+}
+
+int main() {
+	int n = 0;
+	cout << "Enter Size of Array: ";
+	cin >> n;
+	double* arr = new double[n];
+	for (int i = 0; i < n; i++) {
+		cout << "Enter a number: ";
+		cin >> arr[i];
+	}
+	cout << "Max: "<< *maximum(arr, 5) << endl;
+}
+------------------------------------------------------------------------------------------------------------------------
 Ex 2
 #include <iostream>
 using namespace std;
