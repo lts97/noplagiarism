@@ -166,3 +166,4 @@ int main()
 	cout << "Address: " << maximum(numbers, size_numbers) << endl;
 	cout << "Value: " << *(maximum(numbers, size_numbers)) << endl;
 }
+--------------------------------------------------------------------------------------------------------------------------------
