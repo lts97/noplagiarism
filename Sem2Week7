@@ -1,0 +1,20 @@
+Ex1
+#include <iostream>
+using namespace std;
+
+int main() {
+	int x, y;
+	int* p;
+	int* q;
+
+	x = 2;
+	y = 8;
+	p = &x;
+	q = &y;
+	cout << "Address of x: " << &x << " Value of x: " << x << endl;
+	cout << "Dereference of p: " << *p << " Value of p: " << p << endl;
+	cout << "Address of y: " << &y << " Value of y: " << y << endl;
+	cout << "value of q: " << q << " Dereference of q: " << *q << endl;
+	cout << "Address of p: " << &p << endl;
+	cout << "Address of q: " << &q << endl;
+}
