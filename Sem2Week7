@@ -167,3 +167,30 @@ int main()
 	cout << "Value: " << *(maximum(numbers, size_numbers)) << endl;
 }
 --------------------------------------------------------------------------------------------------------------------------------
+Ex7
+#include <stdio.h>
+#include <iostream>
+#include <string.h>
+using namespace std;
+#define CHARS 10
+/* Modifies the string pointed by 'letters' and replaces each valid character 'a-z'
+* (or 'A-Z') with the corresponding uppercase (or lower case) character.
+*/
+void reverse(char* letters)
+{
+	for (int i = 0; i < CHARS; i++) {
+		if(isupper(*letters))
+			*letters = tolower(*letters);
+		else
+			*letters = toupper(*letters);		
+		letters++;
+	}
+}
+int main()
+{
+	char input[CHARS] = "ReVeRsE!";
+	printf("Original: %s \n", input); // prints 'ReVeRsE!'
+	reverse(input);
+	printf("Reversed: %s \n", input); // prints 'rEvErSe!'
+	return 0;
+}
