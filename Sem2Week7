@@ -118,3 +118,29 @@ int main() {
 
 
 }
+--------------------------------------------------------------------------------------------------------------------------------
+Ex4
+#include <iostream>
+using namespace std;
+
+struct Module {
+	char* name;
+	int enrollment;
+	double average_mark;
+};
+
+int main() {
+	Module* co1406 = new Module;
+	Module* co1407 = new Module;
+	co1406->name = "co1406";
+	co1406->enrollment = 15;
+	co1406->average_mark = 78.9;
+
+	co1407->name = "co1407";
+	co1407->enrollment = 12;
+	co1407->average_mark = 67.8;
+
+	cout << "sizeof(Module): " << sizeof Module << endl;
+	cout << co1406->name << ", " << co1406->enrollment << ", " << co1406->average_mark << endl;
+	cout << co1407->name << ", " << co1407->enrollment << ", " << co1407->average_mark << endl;
+}
