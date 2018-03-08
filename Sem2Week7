@@ -144,3 +144,25 @@ int main() {
 	cout << co1406->name << ", " << co1406->enrollment << ", " << co1406->average_mark << endl;
 	cout << co1407->name << ", " << co1407->enrollment << ", " << co1407->average_mark << endl;
 }
+--------------------------------------------------------------------------------------------------------------------------------
+Ex6
+#include <iostream>
+using namespace std;
+double * maximum(double *numbers, int size)
+{
+	double* max = &numbers[0];
+	for (int i = 0; i < size; i++) {
+		if (numbers[i] > *max)
+			*max = numbers[i];
+	}
+	return max;
+		
+}
+int main()
+{
+	const int size_numbers = 6;
+	double numbersArray[size_numbers] = { 2.34, 4.33, 3.45, 12.35, 56.34, 1.22 };
+	double *numbers = numbersArray;
+	cout << "Address: " << maximum(numbers, size_numbers) << endl;
+	cout << "Value: " << *(maximum(numbers, size_numbers)) << endl;
+}
