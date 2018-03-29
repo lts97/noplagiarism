@@ -23,3 +23,80 @@ int main() {
 	else cout << one << " and " << two << " are equal" << endl;
 }
 --------------------------------------------------------------------------------------------------------------------------------
+Ex6
+using namespace std;
+#include <iostream>
+#include <time.h>
+void print(int num[], int size)
+{
+	for (int i = 0; i <= size; i++) {
+		cout << num[i] << ", ";
+	}
+	cout << num[size - 1] << endl;
+} 
+
+bool verify_sorted(int num[], int size) 
+{
+	bool flag = false;
+	for (int i = 0; i < size - 1; i++) {
+		if (num[i] < num[i + 1])
+			flag = true;
+		else
+			return false;
+	}
+	return flag;
+} 
+
+void populate_random(int num[], int size)
+{
+	srand(time(NULL));
+	for (int i = 0; i < size+1; i++) {
+		num[i] = rand() % 999999 + 0;
+	}
+} 
+
+void merge(int a[], int aux[], int lo, int mid, int hi)
+{
+	for (int x = 0; x <= hi; x++) {
+		aux[x] = a[x];
+	}
+
+	int i = lo, j = mid + 1;
+	for (int k = lo; k <= hi; k++)
+	{
+		if (i > mid)
+			a[k] = aux[j++]; 
+		else if (j > hi)
+			a[k] = aux[i++];
+		else if (aux[j] < aux[i])
+			a[k] = aux[j++];
+		else a[k] = aux[i++];
+	}
+}
+
+void sort(int a[], int aux[], int lo, int hi)
+{
+	if (hi <= lo) return;
+	int mid = lo + (hi - lo) / 2;
+	sort(a, aux, lo, mid);
+	sort(a, aux, mid+1,hi);
+	merge(a, aux, lo, mid, hi);
+}
+
+
+
+int main(int argc , char* argv[]) {
+	cout << "Size of the array: ";
+	int size;
+	cin >> size;
+	int* num = new int [size];
+	int* aux = new int[size];
+
+	populate_random(num, size);
+	print(num, size);
+
+	sort(num, aux, 0, size);
+	verify_sorted(num, size);
+	cout << endl << endl;
+	print(num, size);
+}
