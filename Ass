@@ -1,0 +1,27 @@
+EX2
+#include <iostream>
+using namespace std;
+
+void sort(char input[], int size) {				//Insertion sort function.
+	int i, j, temp;
+	for (i = 1; i < size; i++) {
+		j = i;
+		while (j > 0 && input[j - 1] > input[j]) {
+			temp = input[j];
+			input[j] = input[j - 1];
+			input[j - 1] = temp;
+			j--;
+		}
+	}
+}
+int main() {
+	char* str = new char();
+	cout << "Enter a String: ";
+	cin >> str;
+	cout << "Size: " << strlen(str) << endl;		//strlen gets the size of the string.
+	cout << "Unsorted input:" << endl;
+	cout << str << endl;
+	sort(str, strlen(str));							//Function call, insertion sort.
+	cout << "Sorted input:" << endl << str << endl;
+}
+------------------------------------------------------------------------------------------------------------
