@@ -25,3 +25,59 @@ int main() {
 	cout << "Sorted input:" << endl << str << endl;
 }
 ------------------------------------------------------------------------------------------------------------
+EX4
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
+int main(int argc, char* argv[]) {
+	cout << "Enter the name of the file: ";
+	string filename;
+	cin >> filename;
+	ifstream myfile;
+	myfile.open(filename);
+	int n;
+	myfile >> n;
+	int * numbersArray = new int[n];
+
+	for (int i = 0; i < n; i++) {						//Writes the values into an array.
+		myfile >> numbersArray[i];
+	}
+	cout << "Enter 'min' , 'max' or an integer number: ";
+	string number;
+	cin >> number;
+	int max = numbersArray[0];
+	int min = numbersArray[0];
+	int position;
+
+	if (number == "max")								//Checks for the maximum number.
+	{						
+		for (int i = 0; i < n; i++) {
+			if (max < numbersArray[i]) {
+				max = numbersArray[i];
+				position = i;
+			}
+		}
+		cout << "Read 1000 numbers. Maximum number " << max << " found at position " << position;
+	}
+
+	else if (number == "min")							//Checks for the minimum number.
+	{					
+		for (int i = 0; i < n; i++) {
+			if (min > numbersArray[i]) {
+				min = numbersArray[i];
+				position = i;
+			}
+		}
+		cout << "Read 1000 numbers. Minimum number " << min << " found at position " << position;
+	}
+
+	else
+	{
+		int b = stoi(number);							//Converts string into an integer.
+		for (int i = 0; i < n; i++) {
+			if (b == numbersArray[i])
+			cout << "Read 1000 numbers. Number " << number << " found at index " << i;
+		}
+	}
+}
