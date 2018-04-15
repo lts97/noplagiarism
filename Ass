@@ -189,3 +189,56 @@ int main()
 		cout << i << ": " << elapsed << endl;
 	}
 }
+--------------------------------------------------------------------------------------------------------------------------------
+EX3
+#include <iostream>
+using namespace std;
+
+void oddNumber(bool &flag, int number) {
+	if (number % 2 == 1) {
+		flag = false;
+	}
+}
+
+void primeNumber(bool &flag2, int number) {
+	bool prime = true;
+	if (number == 1)				//In order to include number 1.
+		return;
+
+	for (int i = 2; i*i <= number; i++)
+	{
+		
+		if (number % i == 0)
+		{
+			prime = false;
+			break;
+		}
+	}
+	if (prime) flag2 = false;
+	}
+	
+
+
+int main() {
+	int a, b, c;
+	cout << "Enter Number Range: ";
+	cin >> a;
+	cout << "Enter 0 to include or 1 to skip ODD numbers: ";
+	cin >> b;
+	cout << "Enter 0 to include or 1 to skip PRIME numbers: ";
+	cin >> c;
+	bool flag = false;
+	for (int i = 1; i <= a; i++) {
+		flag = true;
+		if (b == 1) {
+			oddNumber(flag, i);
+		}
+		
+		if (c == 1) {
+			primeNumber(flag, i);
+		}
+
+		 if (flag)
+			 cout << i << " ";
+	}
+}
