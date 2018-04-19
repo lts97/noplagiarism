@@ -64,7 +64,7 @@ void increase(vector<HighScoreEntry> v, string n, int inc) {
 		v[3].name = "ish";*/
 		//display(v);
 	}
-  -------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------
 EX11.9
 include <iostream>
 #include <vector>
@@ -87,4 +87,30 @@ int main() {
 	for (int i = 0; i < v2.size(); i++) {
 		cout << v2[i] << " ";
 	}
+}
+-------------------------------------------------------------------------------------------------------------------------------
+EX11.10
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int occ(vector <int> v, int num) {
+	int index = -1;
+	for (int i = 0; i < v.size(); i++) {
+		if (num == v[i])
+			index = i;
+	}
+	return index;
+}
+
+int main() {
+	vector <int> v;
+	v.push_back(3);
+	v.push_back(5);
+	v.push_back(3);
+	v.push_back(9);
+	v.push_back(3);
+
+	int num = 3;
+	cout<< "Index of the last occurence of "<< num << " is: " << occ(v, num) << endl;
 }
