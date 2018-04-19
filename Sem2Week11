@@ -1,0 +1,67 @@
+EX11.6-11.8
+#include <iostream>
+#include <vector>
+#include <string>
+using namespace std;
+
+
+struct HighScoreEntry
+{
+	int score;
+	string name;
+};
+
+//11.6
+void display(vector<HighScoreEntry> v) {
+	for (int i = 0; i < v.size(); i++) {
+		cout << v[i].score << " " << v[i].name << endl;
+	}
+}
+
+//11.7
+void score(vector<HighScoreEntry> v, string n) {
+	for (int i = 0; i < v.size(); i++) {
+		if (n == v[i].name) {
+			cout << "Score of " << n << ": " << v[i].score << endl;
+		}
+	}
+}
+//11.8
+void increase(vector<HighScoreEntry> v, string n, int inc) {
+	for (int i = 0; i < v.size(); i++) {
+		if (n == v[i].name) {
+			v[i].score += inc;
+			cout << "New score of " << n << ": " << v[i].score << endl;
+		}
+	}
+}
+
+	int main() {
+		vector <HighScoreEntry> v;
+		v.push_back({40,"ace"});
+		v.push_back({ 60,"bob" });
+		v.push_back({ 30,"cat" });
+		v.push_back({ 70,"ish" });
+		int scoreInc;
+		string name;
+		cout << "Enter a name: ";
+		cin >> name;
+		cout << "Enter score to increase: ";
+		cin >> scoreInc;
+		increase(v, name, scoreInc);
+		//old/alternative method
+		/*v.push_back(HighScoreEntry());
+		v[0].score = 40;
+		v[0].name = "ace";
+		v.push_back(HighScoreEntry());
+		v[1].score = 60;
+		v[1].name = "bob";
+		v.push_back(HighScoreEntry());
+		v[2].score = 30;
+		v[2].name = "cat";
+		v.push_back(HighScoreEntry());
+		v[3].score = 70;
+		v[3].name = "ish";*/
+		//display(v);
+	}
+  -------------------------------------------------------------------------------------------------------------------------------
